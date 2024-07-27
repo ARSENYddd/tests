@@ -1,5 +1,4 @@
-// src/fromFormToServer.test.js
-const fromFormToServer = require('./fromFormToServer');
+const fromFormToServer = require('./fromFormToServer')
 
 describe('fromFormToServer', () => {
   it('should convert a domestic juridical person correctly', () => {
