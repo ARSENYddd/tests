@@ -1,6 +1,7 @@
-const fromFormToServer = require('./fromFormToServer')
+import { shallowMount } from '@vue/test-utils';
+import EditForm from '@/components/EditForm.vue';
 
-describe('fromFormToServer', () => {
+describe('EditForm.vue', () => {
   it('should convert a domestic juridical person correctly', () => {
     const personInForm = {
       isForeign: false,
@@ -9,7 +10,9 @@ describe('fromFormToServer', () => {
       tin: '1234567890'
     };
     
-    const result = fromFormToServer(personInForm);
+    const wrapper = shallowMount(EditForm);
+    const result = wrapper.vm.fromFormToServer(personInForm);
+    
     expect(result).toEqual({
       type: 'juridical',
       tin: '1234567890',
@@ -27,7 +30,9 @@ describe('fromFormToServer', () => {
       tin: '0987654321'
     };
     
-    const result = fromFormToServer(personInForm);
+    const wrapper = shallowMount(EditForm);
+    const result = wrapper.vm.fromFormToServer(personInForm);
+    
     expect(result).toEqual({
       type: 'physical',
       tin: '0987654321',
@@ -45,7 +50,9 @@ describe('fromFormToServer', () => {
       tin: 'A123456789'
     };
     
-    const result = fromFormToServer(personInForm);
+    const wrapper = shallowMount(EditForm);
+    const result = wrapper.vm.fromFormToServer(personInForm);
+    
     expect(result).toEqual({
       type: 'foreign_juridical',
       tin: null,
@@ -63,7 +70,9 @@ describe('fromFormToServer', () => {
       tin: 'B987654321'
     };
     
-    const result = fromFormToServer(personInForm);
+    const wrapper = shallowMount(EditForm);
+    const result = wrapper.vm.fromFormToServer(personInForm);
+    
     expect(result).toEqual({
       type: 'foreign_physical',
       tin: null,
@@ -81,7 +90,9 @@ describe('fromFormToServer', () => {
       tin: '1234567890'
     };
     
-    const result = fromFormToServer(personInForm);
+    const wrapper = shallowMount(EditForm);
+    const result = wrapper.vm.fromFormToServer(personInForm);
+    
     expect(result).toEqual({
       type: 'juridical',
       tin: '1234567890',
@@ -99,7 +110,9 @@ describe('fromFormToServer', () => {
       tin: ''
     };
     
-    const result = fromFormToServer(personInForm);
+    const wrapper = shallowMount(EditForm);
+    const result = wrapper.vm.fromFormToServer(personInForm);
+    
     expect(result).toEqual({
       type: 'foreign_physical',
       tin: null,
